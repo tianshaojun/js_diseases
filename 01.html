@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>typeof和instanceof检测数据类型有哪些异同</title>
+</head>
+
+<body>
+    <script>
+        //typeof检测 返回的是对应的数据类型
+        console.log(typeof (123));       //number
+        console.log(typeof (true));      //boolean
+        console.log(typeof ('MOOC'));    //string
+        console.log(typeof (undefined)); //undefined
+
+        console.log(typeof (null));  //object 为什么不null
+        //计算机typeof 返回的数据类型 机器码 01011：000 => object
+        //null 0000000...000 => object
+        //js bug
+
+        console.log(typeof ([]));  //object //引用
+        console.log(typeof (new Date())); //object
+        console.log(typeof ({}));  //object
+
+        console.log(typeof (function () { }));  //function
+        console.log(typeof Array);  //function 为什么不是object
+        //typeof 引用类型 object: object function
+        //object 定义一个[[call]]: function object
+
+        //面试题
+        var str = 'MOOC';
+        console.log(str); //MOOC
+        console.log(typeof ('MOOC')); //string
+        var str1 = new String('MOOC'); //实例化后的对象
+        console.log(str1) //{} key:value 0:M,1:O,2:O,3:C
+        console.log(typeof (str1)); //object
+
+        //typeof 少null,多function
+
+        //-----------------------------------------------------------
+
+        //instanceof检测boolean: true false
+        //A instanceof B
+        console.log([] instanceof Array); //true
+        console.log({} instanceof Object); //true
+        console.log(new Date() instanceof Date); //true
+        function Person() { };
+        console.log(new Person() instanceof Person); //true
+
+        console.log([] instanceof Object); //true
+        console.log(new Date() instanceof Object); //true
+        console.log(new Person instanceof Object); //true
+        //instanceof 原型链  A instanceof B true, B instanceof C true
+        //儿子 爸爸 爷爷
+
+        //总结
+        //typeof返回值是一个字符串，该字符串说明运算数的类型;结果为number,boolean,string,function(函数),object(null,数组,对象),undefined
+        //instanceof是用来判断A是否为B的实例对象,检测的是原型
+
+
+        //------------------------------------------------------------
+
+        console.log(Object.prototype.toString.call('1'));  //string
+        console.log(Object.prototype.toString.call([]));   //Array
+
+    </script>
+</body>
+
+</html>
