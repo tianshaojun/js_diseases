@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>如何快速深浅拷贝</title>
+</head>
+
+<body>
+  <script>
+    //深拷贝与浅拷贝，简单点来说:
+    //就是假设B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝;
+    //如果B没变，那就是深拷贝
+
+    //遍历
+    var obj = {
+      a: 'hello',
+      b: {
+        a: 'world',
+        b: 111
+      },
+      c: [11, 'Jack', 'Tom']
+    }
+    // function simpleClone(objNew) {
+    //   var obj = {}
+    //   for(var i in objNew) {
+    //     obj[i] = objNew[i]
+    //   }
+    //   return obj;
+    // }
+    // var objCopy = simpleClone(obj);
+    // objCopy.b.a = 'world1';
+    // console.log(obj);
+    // console.log(objCopy);
+
+    //Object.create()
+    // var objCopy = Object.create(obj);
+    // objCopy.b.a = 'world1';
+    // console.log(obj);
+    // console.log(objCopy);
+
+
+    //-----------------------------------------------
+
+
+    //深拷贝
+    //遍历
+    // function deepClone (startObj, endObj) {
+    //   var obj = endObj || {};
+    //   for (var i in startObj) {
+    //     if (typeof startObj[i] === 'object') {
+    //       // obj[i] = startObj[i].constructor === Array ? [] : {};
+    //       obj[i] = startObj[i].constructor === Array ? [] : Object.create(null);
+    //       deepClone(startObj[i], obj[i]);
+    //     } else {
+    //       obj[i] = startObj[i];
+    //     }
+    //   }
+    //   return obj;
+    // }
+    // var objCopy = deepClone(obj);
+    // objCopy.b.a = 'world1';
+    // objCopy.c[0] = '222';
+    // console.log(obj);
+    // console.log(objCopy);
+
+    //JSON.parse(JSON.stringify())
+    var objCopy = JSON.parse(JSON.stringify(obj));
+    objCopy.b.a = 'world1';
+    objCopy.c[0] = '222';
+    console.log(obj);
+    console.log(objCopy);
+  </script>
+</body>
+
+</html>
