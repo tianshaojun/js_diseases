@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开发中常见数据类型转换有哪些坑</title>
+</head>
+<body>
+   <script>
+     //特殊类型的隐式转换 NaN 0 undefined null "" => false
+     var bool = Boolean(NaN);
+     console.log(bool);
+
+
+     //逻辑运算符&&和||在隐式转换下的情况
+     console.log(true && true); //true
+     console.log(true || true); //true
+     console.log(0 || 5); //5
+     console.log(5 || 0); //5
+     console.log(0 && 5); //0
+     console.log(5 && 0); //0
+
+
+     //==和===的区别 
+     console.log(undefined == null); //true 值
+     console.log(undefined === null); //false 值 类型
+   </script>
+</body>
+</html>
