@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>面试常见装箱和拆箱的理解</title>
+</head>
+
+<body>
+  <script>
+    //装箱：把基本数据类型转化为对应的引用数据类型的操作
+    // var num = 123; //number
+    // var objNum = new Number(123); //object
+    // console.log(typeof objNum); //object
+    //拆箱：将引用类型对象转换为对应的值类型对象
+    // var objNum = new Number(123);
+    // console.log(typeof objNum.valueOf()); //123 number
+
+
+    //js toPrimitive(input,type) input:传入的值 type:值类型
+    //1.input 判断是不是原始类型的值  是  直接返回
+    //2.不是  input.valueOf() 是  原始类型  直接返回
+    //3.还不是  input.toString() string 是 原始类型 返回
+    //4.报错
+
+
+    //valueOf(): input 原始类型的值  有  返回  没有  返回对象本身
+    //toString(): input 字符串转换  对象  [object type] type:对象类型
+
+
+    //面试题
+    // console.log([] + []); // ''
+    // console.log([].valueOf()); // []
+    // console.log([].toString()); // ''
+
+
+    console.log([] + {}); // [object object]
+    console.log({}.valueOf()); // {}
+    console.log({}.toString()); // [object object]
+
+    console.log({} + []); // [object object] 或 0
+    console.log({} + []); // {} 代码块
+    console.log(+ []); //0
+    console.log(+ ''); //0
+  </script>
+</body>
+
+</html>
