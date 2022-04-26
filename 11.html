@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date对象中getMonth()需要注意的</title>
+</head>
+<body>
+  <script>
+    var now = new Date();
+    console.log(now.getTime()); //1650981359515 1970年1月1日0时至今的一个毫秒数
+    console.log(now.getDay()); //2  本周的第几天
+    console.log(now.getDate()); //26 本月的几号
+    console.log(now.getMonth() + 1); //4月  存储或者获取月份时需要注意是0-11
+  </script>
+</body>
+</html>

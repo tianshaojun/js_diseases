@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开发中编码和解码使用场景有哪些</title>
+</head>
+
+<body>
+  <script>
+    var url = 'http://www.baidu.com?key=hello&name=张三&num=123';
+
+    // console.log(escape(url)); //除了ASCII(a-z,0-9) .
+    // var es = escape(url);
+    // console.log(unescape(es));
+
+    // console.log(encodeURI(url)); //http://www.baidu.com?key=hello&name=%E5%BC%A0%E4%B8%89&num=123
+    // var ec = encodeURI(url);
+    // console.log(decodeURI(ec));
+
+    //URI
+    //encodeURIComponent() decodeURIComponent()
+    console.log(encodeURIComponent(url)); //http%3A%2F%2Fwww.baidu.com%3Fkey%3Dhello%26name%3D%E5%BC%A0%E4%B8%89%26num%3D123
+    
+  </script>
+</body>
+
+</html>
