@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三种事件绑定的异同</title>
+</head>
+<body>
+  <input type="button" value="html事件点击" onclick="fun()">
+  <input type="button" value="dom0级事件" id="btn">
+  <input type="button" value="dom2级事件" id="btn1">
+  <script>
+    //广义javascript ECMAScript + DOM + BOM
+    //狭义javascript ECMAScript
+    //1.html事件
+    function fun() {
+      alert('hello MOOC');
+    }
+
+    //dom0级事件：事件绑定
+    document.getElementById('btn').onclick = function() {
+      alert('hello MOOC2');
+    }
+
+    //3.dom2级事件：事件监听
+    //element.addEventListener(event,function,useCapture)  removeEventListener
+    //event:(必须)事件名，支持所有DOM事件
+    //function:(必须)指定要事件触发时执行的函数
+    //useCapture:(可选)指定事件是否在捕获或冒泡阶段执行 true-捕获 false-冒泡 默认false
+    //IE8:element.attachEvent(event,function)
+    //event:(必须)事件类型。需要加"on" 例如：onclick
+    //function:(必须)指定要事件触发时执行的函数
+    document.getElementById('btn1').addEventListener('click',fun2);
+    function fun2() {
+      alert('hello MOOC3');
+    }
+
+
+    //事件监听的优点：可以绑定多个事件；常规的事件绑定只执行最后绑定的事件
+    //原因:js不支持事件重载，绑定事件相当于一个变量存储的事件函数的地址，如果再绑定一个事件，相当于变量指向另一个函数的地址；事件监听相当于定阅发布者，改变了数据，触发了事件，订阅这个事件的函数执行
+  </script>
+</body>
+</html>
