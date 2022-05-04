@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+</head>
+
+<body>
+  <a href="http://www.baidu.com">百度</a>
+  <form action="http://www.baidu.com">
+    <input type="submit" value="提交" name="sub" id="submit">
+  </form>
+</body>
+<script>
+  //让链接不跳转或按钮不提交
+  var a = document.querySelector('a');
+  var input = document.getElementById('submit');
+  a.onclick = function (e) {
+    e.preventDefault();
+    //低版本浏览器
+    //e.returnValue;
+    //return false 也可以阻止默认行为，但是后面的代码不再执行，而且只限于传统事件注册方式
+    //return false
+  }
+</script>
+
+</html>

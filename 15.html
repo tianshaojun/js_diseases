@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件</title>
+  <style>
+    #demo {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+    }
+
+    #demo1 {
+      width: 150px;
+      height: 150px;
+      background-color: red;
+    }
+
+    #demo3 {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="demo">
+    div0
+    <div id="demo1">
+      div1
+      <div id="demo3">点击div2</div>
+    </div>
+  </div>
+  <ul id="demo2">
+    <li>123</li>
+    <li>456</li>
+    <li>789</li>
+  </ul>
+  <script>
+    //什么是事件对象：事件触发时候自动创建的，封装了事件发生的元素和属性信息
+    var obj3 = document.getElementById('demo3');
+    obj3.addEventListener('click', function (e) { //event
+      e.stopPropagation();
+      var e = e || window.event; //IE8:window.event arguents[0]
+      if (e.target.nodeName.toLowerCase() == 'div') { //IE8:e.srcElement
+        alert(e.target.innerHTML);
+      }
+    }, false); //true,捕获  false,冒泡
+
+
+    //事件的一个周期
+    //事件捕获、事件对象的触发、冒泡触发
+    //事件冒泡应用：1.阻止冒泡 e.stopPropagation;  e.cancelBubble = true
+    var obj = document.getElementById('demo')
+    obj.addEventListener('click', function (e) {
+      alert('div0')
+    }, false)
+    var obj1 = document.getElementById('demo1')
+    obj1.addEventListener('click', function (e) {
+      alert('div1')
+    }, false)
+    //事件委托
+    var obj2 = document.getElementById('demo2')
+    obj2.addEventListener('click', function (e) {
+      var e = e || window.event; //IE8:window.event arguments[0]
+      if (e.target.nodeName.toLowerCase() == 'li') {
+        alert(e.target.innerHTML);
+      }
+    }, false)
+  </script>
+</body>
+
+</html>
