@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>带你深入理解作用域和作用域链</title>
+</head>
+<body>
+  <script>
+    //作用域scope: 一个变量的可用范围
+    //作用域链scope chain:以当前作用域的scope属性为起点依次引用每个AO，直到window结束，形成多级引用关系
+    //js作用域：ES5
+    //两大类：全局作用域、函数作用域
+
+    //解释执行，在执行过程中，JavaScript引擎是严格按着作用域机制(scope)来执行的，并且JavaScript的变量和函数作用域是在定义时决定的，而不是执行时决定的。JavaScript中的变量作用域在函数体内有校，无块作用域
+
+    //作用域
+    function a() {
+      function b() {
+        var bb = 234;
+      }
+      var aa = 123;
+    }
+    var glob = 100;
+    a();
+    // console.log(b); //报错
+
+
+    //面试题
+    var buttons = [{name:'b1'},{name:'b2'},{name:'b3'}];
+    function bind() {
+      for(var i=0;i<buttons.length;i++){
+        buttons[i].fun = function() {
+          alert(i);
+        }
+      }
+    }
+    bind();
+    buttons[0].fun(); //3
+    buttons[1].fun(); //3
+    buttons[2].fun(); //3
+  </script>
+</body>
+</html>
