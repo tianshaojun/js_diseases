@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>new的执行过程有哪几部</title>
+</head>
+
+<body>
+  <script>
+    function Person (name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    var p = new Person('Jack', 23); //实例化
+    console.log(p.name);
+
+
+    //4步
+    //创建一个新对象obj
+    var obj = new Object()
+    //把obj的proto指向构造函数的prototype对象 实现继承
+    obj.__proto__ = Fn.prototype
+    //将步骤1新创建的对象obj作为this的上下文
+    var result = Fn.call(obj)
+    //返回创建的对象obj(如果该函数没有返回对象，则返回this)
+    if (typeof result === 'object') {
+      // return result;
+    } else {
+      // return obj;
+    }
+  </script>
+</body>
+
+</html>

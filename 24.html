@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>开发中call、apply、bind的使用场景区分</title>
 </head>
+
 <body>
   <script>
     //Function对象 call、apply、bind
@@ -15,6 +17,29 @@
     //Function.apply(obj,args)方法能接收两个参数
     //obj:这个对象将代替Function类里this对象
     //args:这个是数组，它将作为参数传给Function (args --> arguments)
+
+    //call apply的区别
+    //call:单个的参数传入
+    //apply:以数组的形式传入
+
+    var stu1 = {
+      name: 'Jack',
+      age: 18,
+      say: function (school, grade) {
+        console.log(this.name + '今年' + school + ' 年级' + grade);
+      }
+    }
+    var stu2 = {
+      name: 'Tom'
+    }
+    stu1.say.call(stu2, '清华', '四');
+    stu1.say.apply(stu2, ['北大', '三']);
+
+    //应用：类数组转数组
+    // var arr = Array.prototype.slice.apply(arguments);
+
+    //bind:类似于call 但是与其不同的是call调用之后可以立即执行，但是bind需要用一个变量进行接收之后再执行
   </script>
 </body>
+
 </html>
